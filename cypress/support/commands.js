@@ -51,4 +51,11 @@ Cypress.Commands.add('saveSession', () => {
   cy.getCookies().then((cookies) => {
     cy.writeFile('cypress/fixtures/sessionCookies.json', cookies)
   })
+
+// Add product to cart by index
+Cypress.Commands.add('addProductToCart', (index) => {
+  cy.get('.features_items .product').eq(index).find('.add-to-cart').click()
+  cy.contains('Continue Shopping').click()
 })
+})
+
